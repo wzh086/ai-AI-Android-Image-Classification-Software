@@ -1,0 +1,32 @@
+// ============================================================================
+//  文件：settings.gradle（Gradle 的"工程总目录"配置）
+//  作用：告诉 Gradle 本工程叫什么、包含哪些子模块、去哪些仓库下载插件与依赖库。
+//  怎么用：用 Android Studio 打开本工程时会自动读取；
+//          若以后新增模块（例如 :library），在文件末尾补一行 include ':library'。
+// ============================================================================
+
+// pluginManagement：管理"构建插件"从哪里下载。
+// Android Gradle Plugin（AGP）就是通过这里被找到的。
+pluginManagement {
+    repositories {
+        google()             // 谷歌官方仓库：Android 插件、AndroidX 库
+        mavenCentral()       // Maven 中央仓库：第三方 Java/Kotlin 库
+        gradlePluginPortal() // Gradle 官方插件仓库
+    }
+}
+
+// dependencyResolutionManagement：统一管理"业务依赖"从哪里下载，子模块不用各写一遍。
+dependencyResolutionManagement {
+    // FAIL_ON_PROJECT_REPOS：禁止子模块自己再写 repositories，避免仓库地址混乱。
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()       // AndroidX、Material Components 等
+        mavenCentral() // 其它开源库
+    }
+}
+
+// 工程名：Android Studio 标题栏显示这个名字（与文件夹名"1"无关）。
+rootProject.name = "PhotoClassifier"
+
+// 包含的子模块：:app 就是手机应用模块，代码在 app/ 目录下。
+include ':app'

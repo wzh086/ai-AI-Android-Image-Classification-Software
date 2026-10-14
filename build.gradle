@@ -1,0 +1,14 @@
+// ============================================================================
+//  文件：build.gradle（顶层构建脚本）
+//  作用：只登记整个工程要用到的"构建插件"及其版本，不在这里真正启用。
+//        真正启用插件的地方是 app/build.gradle。
+//  怎么用：要升级 Android Gradle Plugin 时，改下面 version 后面的数字，
+//          改完点 Android Studio 右上角的 "Sync Now" 同步即可。
+// ============================================================================
+
+plugins {
+    // com.android.application：把模块打包成"可安装 APK"的插件。
+    // version '9.4.0' 是 Android Gradle Plugin（AGP）版本，需与 Gradle 版本匹配。
+    // apply false：这里只登记版本号，不在顶层工程真正应用它。
+    id 'com.android.application' version '9.4.0' apply false
+}
